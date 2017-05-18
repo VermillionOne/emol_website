@@ -17,6 +17,7 @@ class CreateTimesTable extends Migration
             $table->increments('id');
             $table->integer('task_id');
             $table->integer('user_id');
+            $table->time('time_span');
             $table->float('value_per_hour', 8, 2);
             $table->string('title');
             $table->string('handle');

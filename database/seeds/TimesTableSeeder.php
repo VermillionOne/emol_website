@@ -17,6 +17,7 @@
         App\Time::create([
           'task_id' => $faker->numberBetween(),
           'user_id' => $faker->numberBetween(),
+          'time_span' => $faker->time('H:i'),
           'value_per_hour' => $faker->randomFloat($nbMaxDecimals = 2, $min = 50, $max = 100),
           'title' => $faker->sentence($nbWords = 3),
           'handle' => $faker->sentence($nbWords = 3)
