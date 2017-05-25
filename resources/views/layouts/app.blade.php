@@ -20,6 +20,7 @@
         ]) !!};
     </script>
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -77,8 +78,33 @@
                 </div>
             </div>
         </nav>
+        @if (Auth::guest())
+            @yield('content')
+        @else
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
 
-        @yield('content')
+                    <ul class="list-group">
+                        @foreach ($projects as $project)
+
+                            <li class="list-group-item">Item 1</li>
+
+                        @endforeach
+                    </ul>
+
+                </div>
+
+                <div class="col-sm-9 col-md-9 col-lg-9">
+
+                    @yield('content')
+
+                </div>
+
+            </div>
+        @endif
+
+
+
     </div>
 
     <!-- Scripts -->

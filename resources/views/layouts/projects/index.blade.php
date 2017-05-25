@@ -1,24 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-md-8 col-md-offset-2">
-    <div class="panel-heading">Dashboard</div>
+<div class="col-sm-9 col-md-9 col-lg-9">
 
-        @foreach ($clients as $client)
+        <div class="page-header">
+          <h1><small>Client:</small> {{ $project->client}}</h1>
+        </div>
+
+        <div class="page-header">
+          <h1><small>Project:</small> {{ $project->title}}</h1>
+        </div>
+
+        @foreach ($project->tasks as $task)
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">{{ $client->title }}</div>
+                <div class="panel-heading">{{ $task->title }}</div>
                 <div class="panel-body">
                     <p></p>
                 </div>
 
                 <!-- Table -->
-                @foreach ($client->projects as $project)
+                @foreach ($task->times as $time)
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ $project->title }}</th>
+                                <th>{{ $time->title }}</th>
                             </tr>
                         </thead>
                         <tbody>

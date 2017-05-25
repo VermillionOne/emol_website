@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class TimeController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -93,7 +98,7 @@ class TimeController extends Controller
         $time->units_in_stock = $request->input('units_in_stock');
         $time->save();
 
-        return redirect()->route('times.show',
+        return redirect()->route('tasks.index',
             $time->id)->with('flash_message',
             'Time, '. $time->title.' updated');
     }
@@ -109,7 +114,7 @@ class TimeController extends Controller
         $time = Time::findOrFail($id);
         $time->delete();
 
-        return redirect()->route('times.index')
+        return redirect()->route('tasks.index')
             ->with('flash_message',
              'Time successfully deleted');
     }
