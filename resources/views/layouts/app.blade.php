@@ -79,31 +79,35 @@
             </div>
         </nav>
         @if (Auth::guest())
-            @yield('content')
-        @else
-            <div class="row">
-                <div class="col-sm-3 col-md-3 col-lg-3">
-
-                    <ul class="list-group">
-                        @foreach ($projects as $project)
-
-                            <li class="list-group-item">Item 1</li>
-
-                        @endforeach
-                    </ul>
-
-                </div>
-
-                <div class="col-sm-9 col-md-9 col-lg-9">
-
-                    @yield('content')
-
-                </div>
-
+            <div class="container">
+                @yield('content')
             </div>
+        @else
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+
+                        <ul class="list-group">
+                            @foreach ($projects as $project)
+
+                                <li class="list-group-item">Item 1</li>
+
+                            @endforeach
+                        </ul>
+
+                    </div>
+
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+
+                        @yield('content')
+
+                    </div>
+
+                </div>
+            </div>
+
         @endif
-
-
 
     </div>
 
