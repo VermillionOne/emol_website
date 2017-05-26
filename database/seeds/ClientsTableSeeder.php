@@ -14,10 +14,13 @@ class ClientsTableSeeder extends Seeder {
 
     foreach(range(1,10) as $index)
     {
-
       App\Client::create([
-        'title' => $faker->sentence(3),
-        'handle' => $faker->slug(3),
+        'title'     => $faker->company,
+        'address'   => $faker->address,
+        'address_2' => $faker->secondaryAddress,
+        'phone'     => $faker->phoneNumber,
+        'email'     => $faker->companyEmail,
+        'handle'    => $faker->slug,
       ]);
     }
   }

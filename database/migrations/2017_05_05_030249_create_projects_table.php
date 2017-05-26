@@ -23,7 +23,6 @@ class CreateProjectsTable extends Migration
             $table->string('worked_hours');
             $table->string('deadline_date');
             $table->string('hourly_rate');
-            $table->string('title');
             $table->string('handle');
             $table->timestamps();
         });
