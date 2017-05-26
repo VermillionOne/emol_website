@@ -10,27 +10,27 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">{{ $client->title }}</div>
                 <div class="panel-body">
-                    <p></p>
+
+                    @foreach ($client->projects as $project)
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ $project->title }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    @endforeach
+
                 </div>
 
-                <!-- Table -->
-                @foreach ($client->projects as $project)
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ $project->title }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                @endforeach
             </div>
 
         @endforeach
