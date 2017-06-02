@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img src="{{ asset("images/emol-logo.svg") }}" alt="Emol Logo">
                     </a>
                 </div>
 
