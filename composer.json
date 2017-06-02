@@ -39,6 +39,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan clear-compiled",
             "php artisan migrate",
+            "cp .env.example .env",
             "php artisan key:generate",
             "php artisan optimize"
         ],
@@ -46,6 +47,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan clear-compiled",
             "php artisan migrate",
+            "cp .env.example .env",
             "php artisan key:generate",
             "php artisan optimize"
         ]
