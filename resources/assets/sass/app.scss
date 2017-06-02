@@ -7,3 +7,12 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// Navbar Logo
+.emol-logo {
+    width: 40%;
+    a & {
+        position: relative;
+    }
+}
