@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset("images/emol-logo.svg") }}" alt="Emol Logo">
+                        @include ('snippets.logo')
                     </a>
                 </div>
 
