@@ -2,37 +2,48 @@
 
 @section('content')
 
-    <div class="panel-heading">Dashboard</div>
+  <div class="emol-page-header">
+    <h1>Dashboard</h1>
+    <div class="pull-right">
 
-    @foreach ($clients as $client)
+    </div>
+  </div>
 
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">{{ $client->title }}</div>
-            <div class="panel-body">
+  @foreach ($clients as $client)
 
-                @foreach ($client->projects as $project)
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ $project->title }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">{{ $client->title }}</div>
+      <div class="panel-body">
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
+        <div class="row">
 
-                        </tbody>
-                    </table>
-                @endforeach
+          <div class="col-md-6">
+            <div class="address"></div>
+            <div class="phone"></div>
+            <div class="email"></div>
+          </div>
 
-            </div>
+          <div class="col-md-6">
+
+            <h3>Current Projects:</h3>
+
+            <ul class="current-project-listw">
+              @foreach ($client->projects as $project)
+                <li>
+                  <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
+                </li>
+              @endforeach
+            </ul>
+
+          </div>
 
         </div>
 
-    @endforeach
+      </div>
+
+    </div>
+
+  @endforeach
 
 @endsection

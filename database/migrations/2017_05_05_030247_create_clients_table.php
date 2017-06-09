@@ -23,7 +23,14 @@ class CreateClientsTable extends Migration
             $table->string('handle');
             $table->timestamps();
         });
+
+        Schema::create('client_user', function (Blueprint $table) {
+            $table->integer('client_id');
+            $table->integer('user_id');
+            $table->primary(['client_id', 'user_id']);
+        });
     }
+
 
     /**
      * Reverse the migrations.
@@ -33,5 +40,6 @@ class CreateClientsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('clients');
+        Schema::dropIfExists('client_user');
     }
 }

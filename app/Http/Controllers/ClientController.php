@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Client;
+use App\Project;
 use Auth;
 use Session;
 
@@ -46,14 +47,17 @@ class ClientController extends Controller
     {
         //Validating title and body field
         $this->validate($request, [
-            'title'          => 'required|max:100',
-            'handle'         => 'required',
+            'title'   => 'required|max:100',
+            'user_id' => 'required',
+            'handle'  => 'required',
             ]);
 
         $title = $request['title'];
         $handle = $request['handle'];
 
         $client = Client::create($request->only('title','handle'));
+
+        $client->user()->attach(Auth::user()->id);
 
         //Display a successful message upon save
         return redirect()->route('client.index')->with('flash_message', $client->title.' successfully added to Client List.');

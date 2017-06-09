@@ -43,4 +43,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Task::class);
     }
 
+   /*
+    * A User can have many Clients
+    */
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class);
+    }
+
 }

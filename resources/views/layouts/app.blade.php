@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -84,17 +84,11 @@
             </div>
         @else
             <div class="container">
-
                 <div class="row">
+
                     <div class="col-sm-3 col-md-3 col-lg-3">
 
-                        <ul class="list-group">
-                            @foreach ($projects as $project)
-
-                                <li class="list-group-item">Item 1</li>
-
-                            @endforeach
-                        </ul>
+                        @include('projects.sidebar')
 
                     </div>
 
@@ -106,7 +100,6 @@
 
                 </div>
             </div>
-
         @endif
 
     </div>

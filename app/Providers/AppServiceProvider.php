@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Project;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        view()->share('project_list', Project::get());
     }
 
     /**

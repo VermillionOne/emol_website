@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Time;
+use App\Project;
+use Auth;
+use Session;
+
 use Illuminate\Http\Request;
 
 class TimeController extends Controller

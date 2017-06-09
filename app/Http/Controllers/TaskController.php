@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
+use App\Project;
+use Auth;
+use Session;
+
 use Illuminate\Http\Request;
 
 class TaskController extends Controller

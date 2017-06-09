@@ -13,7 +13,7 @@ class Client extends Model
    * @var array
    */
   protected $fillable = [
-    'title', 'handle'
+    'title', 'handle','address','address_2','phone','email','handle',
   ];
 
   /*
@@ -23,4 +23,13 @@ class Client extends Model
   {
     return $this->hasMany(Project::class);
   }
+
+  /*
+   * The Client Model can belong to many Users
+   */
+  public function users()
+  {
+    return $this->belongsToMany(User::class);
+  }
+
 }
