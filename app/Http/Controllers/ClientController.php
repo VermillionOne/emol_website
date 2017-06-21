@@ -61,7 +61,6 @@ class ClientController extends Controller
         $zipcode = $request['zipcode'];
         $phone = $request['phone'];
         $email = $request['email'];
-        $handle = $request['handle'];
 
         $client = Client::create([
             'title' => $title,
@@ -72,7 +71,6 @@ class ClientController extends Controller
             'zipcode' => $zipcode,
             'phone' => $phone,
             'email' => $email,
-            'handle' => $handle,
         ]);
 
         $client->users()->attach(Auth::user()->id);
@@ -130,7 +128,6 @@ class ClientController extends Controller
         $client->zipcode = $request['zipcode'];
         $client->phone = $request['phone'];
         $client->email = $request['email'];
-        $client->handle = $request['handle'];
 
         $client->save();
 

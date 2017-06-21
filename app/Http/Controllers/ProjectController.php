@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Client;
+use App\User;
 use Auth;
 use Session;
 
@@ -35,10 +36,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $clients = Client::get();
-        $project_list = Project::orderBy('client_id', 'title');
-        $projects = Project::orderBy('client_id', 'title');
-        return view('projects.create', compact('projects', 'project_list', 'clients'));
+        $user = User::findOrFail(Auth::user()->id);
+        $clients = $user->clients;
+        return view('projects.create', compact('user', 'clients'));
     }
 
     /**
@@ -85,9 +85,11 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
+        $user = User::findOrFail(Auth::user()->id);
+        $clients = $user->clients;
         $project = Project::findOrFail($id);
         $project_list = Project::get();
-        return view('projects.show', compact('project', 'project_list'));
+        return view('projects.show', compact('project', 'project_list', 'clients'));
     }
 
     /**
@@ -98,7 +100,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        $clients = Client::get();
+        $user = User::findOrFail(Auth::user()->id);
+        $clients = $user->clients;
         $project_list = Project::orderBy('client_id', 'title');
         $project = Project::findOrFail($id);
         return view('projects.edit', compact('project', 'project_list', 'clients'));

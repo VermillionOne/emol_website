@@ -31,8 +31,13 @@
           <div class="col-md-6">
 
             <ul class="fa-ul">
-              <li><i class="fa-li fa fa-map-marker"></i>{{ $client->address }} @if ($client->address_2) {{ $client->address_2 }} @endif <br>
-              {{ $client->city }}, {{ $client->state }}  {{ $client->zipcode }}</li>
+
+              @if ($client->address || $client->address_2 || $client->city || $client->state || $client->zipcode )
+                <li><i class="fa-li fa fa-map-marker"></i>
+                  {{ $client->address }} @if ($client->address_2) {{ $client->address_2 }} @endif <br>
+                @if ($client->city){{ $client->city }}, @endif {{ $client->state }} {{ $client->zipcode }}</li>
+              @endif
+
               <li><i class="fa-li fa fa-phone"></i>{{ $client->phone }}</li>
               <li><i class="fa-li fa fa-envelope"></i>{{ $client->email }}</li>
             </ul>
