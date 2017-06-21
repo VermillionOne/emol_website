@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $clients = Client::orderby('title')->paginate(15);
-        $projects = Project::orderby('title')->paginate(15);
-        return view('home')->with(compact('projects','clients'));
+        $project_list = Project::orderby('title');
+        return view('home', compact('project_list','clients'));
     }
 }

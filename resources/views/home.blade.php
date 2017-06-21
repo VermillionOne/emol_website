@@ -2,11 +2,21 @@
 
 @section('content')
 
+  @if (session('flash_message'))
+    <div class="alert alert-success">
+        {{ session('flash_message') }}
+    </div>
+  @endif
+
   <div class="emol-page-header">
     <h1>Dashboard</h1>
-    <div class="pull-right">
+  </div>
 
-    </div>
+  <div class="emol-page-sub-header row">
+    <h2>Clients
+      <small><a href="{{ route('clients.create') }}"><p class="pull-right"><span class="ion-ios-plus-outline"></span> Add Client</p></a></small>
+    </h2>
+    <hr>
   </div>
 
   @foreach ($clients as $client)
@@ -19,9 +29,14 @@
         <div class="row">
 
           <div class="col-md-6">
-            <div class="address"></div>
-            <div class="phone"></div>
-            <div class="email"></div>
+
+            <ul class="fa-ul">
+              <li><i class="fa-li fa fa-map-marker"></i>{{ $client->address }} @if ($client->address_2) {{ $client->address_2 }} @endif <br>
+              {{ $client->city }}, {{ $client->state }}  {{ $client->zipcode }}</li>
+              <li><i class="fa-li fa fa-phone"></i>{{ $client->phone }}</li>
+              <li><i class="fa-li fa fa-envelope"></i>{{ $client->email }}</li>
+            </ul>
+
           </div>
 
           <div class="col-md-6">

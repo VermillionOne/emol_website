@@ -4,7 +4,7 @@
   <div class="col-sm-9 col-md-9 col-lg-9">
 
     <div class="page-header">
-      <h1><small>Client:</small> {{ $project->client_id }}</h1>
+      <h1><small>Client:</small> {{ $project->clients()->title }}</h1>
     </div>
 
     <div class="page-header">
@@ -22,23 +22,25 @@
         </div>
 
         <!-- Table -->
-        @foreach ($task->times as $time)
           <table class="table">
             <thead>
               <tr>
-                <th>{{ $time->title }}</th>
+                <th>Time Description</th>
+                <th>Elapsed Time</th>
+                <th>Hourly Rate</th>
               </tr>
             </thead>
             <tbody>
 
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
+              @foreach ($task->times as $time)
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              @endforeach
 
             </tbody>
           </table>
-        @endforeach
       </div>
 
     @endforeach

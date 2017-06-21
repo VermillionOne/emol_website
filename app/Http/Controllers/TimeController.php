@@ -23,7 +23,9 @@ class TimeController extends Controller
      */
     public function index()
     {
-        // Times class does not currently have dedicated views
+        $project_list = Project::orderby('title');
+        $times = Time::orderby('task_id', 'title');
+        return view('tasks.index', compact('tasks', 'projects'));
     }
 
     /**
