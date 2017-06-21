@@ -62,10 +62,10 @@ class TaskController extends Controller
             'due_date'  => $due_date
         ]);
 
-        $project->users()->attach(Auth::user()->id);
+        $task->users()->attach(Auth::user()->id);
 
         // Display a successful message upon save
-        return redirect()->route('home')->with('flash_message', $project->title.' successfully added to Client List.');
+        return redirect()->route('tasks.index')->with('flash_message', $project->title.' successfully added to Client List.');
     }
 
     /**
