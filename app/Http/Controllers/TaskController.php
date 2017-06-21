@@ -23,7 +23,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $project_list = Project::orderby('title');
+        $tasks = Task::orderby('project_id', 'title');
+        return view('tasks.index', compact('tasks', 'projects'));
     }
 
     /**

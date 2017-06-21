@@ -18,9 +18,12 @@ class CreateClientsTable extends Migration
             $table->string('title');
             $table->string('address');
             $table->string('address_2');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zipcode');
             $table->string('phone');
             $table->string('email');
-            $table->string('handle');
+            $table->string('handle')->nullable();
             $table->timestamps();
         });
 
@@ -30,7 +33,6 @@ class CreateClientsTable extends Migration
             $table->primary(['client_id', 'user_id']);
         });
     }
-
 
     /**
      * Reverse the migrations.

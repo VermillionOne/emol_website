@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <script src="https://use.fontawesome.com/5e033703b9.js"></script>
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Scripts -->
     <script>
@@ -44,7 +45,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
+                        <li><a href="{{ url('/') }}">Dashboard</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -105,6 +107,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

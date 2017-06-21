@@ -23,8 +23,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $project_list = Project::orderby('title')->paginate(15);
         $clients = Client::orderby('id')->paginate(15); // Display 15 Clients at a time
-        return view('clients.index', compact('clients'));
+        return view('clients.index', compact('clients', 'project_list'));
     }
 
     /**
@@ -34,7 +35,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        $project_list = Project::orderby('title')->paginate(15);
+
+        return view('clients.create', compact('clients', 'project_list'));
     }
 
     /**
@@ -48,19 +51,34 @@ class ClientController extends Controller
         //Validating title and body field
         $this->validate($request, [
             'title'   => 'required|max:100',
-            'user_id' => 'required',
-            'handle'  => 'required',
             ]);
 
         $title = $request['title'];
+        $address = $request['address'];
+        $address_2 = $request['address_2'];
+        $city = $request['city'];
+        $state = $request['state'];
+        $zipcode = $request['zipcode'];
+        $phone = $request['phone'];
+        $email = $request['email'];
         $handle = $request['handle'];
 
-        $client = Client::create($request->only('title','handle'));
+        $client = Client::create([
+            'title' => $title,
+            'address' => $address,
+            'address_2' => $address_2,
+            'city' => $city,
+            'state' => $state,
+            'zipcode' => $zipcode,
+            'phone' => $phone,
+            'email' => $email,
+            'handle' => $handle,
+        ]);
 
-        $client->user()->attach(Auth::user()->id);
+        $client->users()->attach(Auth::user()->id);
 
         //Display a successful message upon save
-        return redirect()->route('client.index')->with('flash_message', $client->title.' successfully added to Client List.');
+        return redirect()->route('home')->with('flash_message', $client->title.' successfully added to Client List.');
     }
 
     /**
@@ -84,7 +102,8 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.edit', compact('client'));
+        $project_list = Project::get();
+        return view('clients.edit', compact('client', 'project_list'));
     }
 
     /**
@@ -96,19 +115,27 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validating title and body field
         $this->validate($request, [
-            'title'=>'required|max:100',
-            'handle'=>'required',
-        ]);
+            'title'   => 'required|max:100',
+            ]);
 
         $client = Client::findOrFail($id);
-        $client->title = $request->input('title');
-        $client->units_in_stock = $request->input('units_in_stock');
+
+        $client->title = $request['title'];
+        $client->address = $request['address'];
+        $client->address_2 = $request['address_2'];
+        $client->city = $request['city'];
+        $client->state = $request['state'];
+        $client->zipcode = $request['zipcode'];
+        $client->phone = $request['phone'];
+        $client->email = $request['email'];
+        $client->handle = $request['handle'];
+
         $client->save();
 
-        return redirect()->route('clients.show',
-            $client->id)->with('flash_message',
-            'Client -> '.$client->title.' updated');
+        // Display a successful message upon save
+        return redirect()->route('home')->with('flash_message', $client->title.' successfully edited.');
     }
 
     /**
