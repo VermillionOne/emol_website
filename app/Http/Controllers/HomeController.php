@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Project;
 use App\Client;
+use App\User;
 use Auth;
 use Session;
 
@@ -28,8 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $clients = Client::orderby('title')->paginate(15);
-        $project_list = Project::orderby('title');
+        $user = User::findOrFail(Auth::user()->id);
+
+        $clients = $user->clients;
         return view('home', compact('project_list','clients'));
     }
 }

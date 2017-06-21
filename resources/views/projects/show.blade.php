@@ -4,7 +4,7 @@
   <div class="col-sm-9 col-md-9 col-lg-9">
 
     <div class="page-header">
-      <h1><small>Client:</small> {{ $project->clients()->title }}</h1>
+      <h1><small>Client:</small> {{ $project->client->title }}</h1>
     </div>
 
     <div class="page-header">
@@ -30,12 +30,14 @@
                 <th>Hourly Rate</th>
               </tr>
             </thead>
+
             <tbody>
 
               @foreach ($task->times as $time)
                 <tr>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $time->title }}</td>
+                  <td>{{ $time->time_span }}</td>
+                  <td>{{ $time->value_per_hour }}</td>
                 </tr>
               @endforeach
 
@@ -44,6 +46,12 @@
       </div>
 
     @endforeach
+
+    <div class="add-project-button">
+      <a href="{{route('task.create')}}">
+        <p><span class="ion-ios-plus-outline"></ul>Add Task</p>
+      </a>
+    </div>
 
   </div>
 @endsection

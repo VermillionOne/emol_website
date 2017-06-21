@@ -1,8 +1,10 @@
+  <?php $user = App\User::find(Auth::user()->id) ?>
+
   <ul class="list-group">
-    @foreach ($project_list as $project_list_item)
+    @foreach ($user->projects as $project)
 
       <li class="list-group-item">
-        <a href="{{ route('projects.show', $project->id) }}">{{ $project_list_item->title }}</a>
+        <a href="{{ route('projects.show', $project->id) }}">{{ $project->title }}</a>
       </li>
 
     @endforeach
@@ -10,6 +12,6 @@
 
   <div class="add-project-button">
     <a href="{{route('projects.create')}}">
-      <p class="ion-ios-plus-outline"></p>
+      <p><span class="ion-ios-plus-outline"></ul> Add Project</p>
     </a>
   </div>
