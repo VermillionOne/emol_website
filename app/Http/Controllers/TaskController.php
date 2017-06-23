@@ -23,8 +23,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $project_list = Project::orderby('title');
-        $tasks = Task::orderby('project_id', 'title');
+        $user = User::findOrFail(Auth::user()->id);
+        $tasks = $user->tasks;
         return view('tasks.index', compact('tasks', 'projects'));
     }
 
