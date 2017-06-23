@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer('project_id');
             $table->string('title');
-            $table->date('due_date');
+            $table->date('due_date')->nullable();
             $table->timestamps();
         });
 
