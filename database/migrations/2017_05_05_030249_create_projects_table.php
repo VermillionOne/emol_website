@@ -17,12 +17,12 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->integer('client_id');
             $table->string('title');
-            $table->string('projected_cost');
-            $table->string('current_cost');
-            $table->string('planned_hours');
-            $table->string('worked_hours');
-            $table->string('deadline_date');
-            $table->string('hourly_rate');
+            $table->string('projected_cost')->nullable();
+            $table->string('current_cost')->nullable();
+            $table->string('planned_hours')->nullable();
+            $table->string('worked_hours')->nullable();
+            $table->string('deadline_date')->nullable();
+            $table->string('hourly_rate')->nullable();
             $table->timestamps();
         });
 
