@@ -28,7 +28,7 @@ class Task extends Model
    */
   public function times()
   {
-    return $this->hasMany(time::class);
+    return $this->hasMany(Time::class);
   }
 
   /*

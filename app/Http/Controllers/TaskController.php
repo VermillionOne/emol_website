@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Time;
 use App\Project;
 use Auth;
 use Session;
