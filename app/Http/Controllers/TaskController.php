@@ -46,18 +46,23 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
+
         // Validating title and body field
         $this->validate($request, [
             'project_id' => 'required|max:100',
-            'title'      => 'required|max:100',
+            'task_title' => 'required|max:100',
         ]);
 
+
         $project_id = $request['project_id'];
-        $title      = $request['title'];
+        $title      = $request['task_title'];
         $due_date   = $request['due_date'];
 
-        $project = Project::create([
-            'client_id' => $client_id,
+        // dd($request);
+
+        $task = Task::create([
+            'project_id' => $project_id,
             'title'     => $title,
             'due_date'  => $due_date
         ]);
@@ -65,7 +70,7 @@ class TaskController extends Controller
         $task->users()->attach(Auth::user()->id);
 
         // Display a successful message upon save
-        return redirect()->route('tasks.index')->with('flash_message', $project->title.' successfully added to Client List.');
+        return redirect()->bacK()->with('flash_message', $task->title.' successfully added to Client List.');
     }
 
     /**

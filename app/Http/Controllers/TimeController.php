@@ -48,20 +48,27 @@ class TimeController extends Controller
     {
         //Validating title and body field
         $this->validate($request, [
-            'title' => 'required|max:255',
-            'handle' => 'required|max:255',
+            'time_title' => 'required|max:255',
             'task_id' => 'required',
-            'user_id' => 'required',
             'time_span' => 'required',
-            ]);
+        ]);
 
-        $title = $request['title'];
+        $title   = $request['time_title'];
+        $task_id = $request['task_id'];
+        $user_id = Auth::user()->id;
+        $time_span = $request['time_span'];
+        $value_per_hour = $request['value_per_hour'];
 
-        $time = Time::create($request->only('title', 'task_id', 'user_id', 'value_per_hour', 'handle'));
+        $time = Time::create([
+            'title' => $title,
+            'task_id' => $task_id,
+            'time_span' => $time_span,
+            'user_id' => $user_id,
+            'value_per_hour' => $value_per_hour
+        ]);
 
         //Display a successful message upon save
-        return redirect()->route('tasks.index')
-            ->with('flash_message', $time->title.' successfully added.');
+        return redirect()->back()->with('flash_message', $time->title.' successfully added.');
     }
 
     /**

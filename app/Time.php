@@ -20,7 +20,7 @@ class Time extends Model
    * @var array
    */
   protected $fillable = [
-      'task_id','user_id','time_span','value','title','handle',
+      'task_id','user_id','time_span','value_per_hour','title'
   ];
 
   /*

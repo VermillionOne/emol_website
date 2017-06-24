@@ -16,13 +16,13 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id');
-            $table->string('title');
-            $table->string('projected_cost')->nullable();
-            $table->string('current_cost')->nullable();
-            $table->string('planned_hours')->nullable();
-            $table->string('worked_hours')->nullable();
+            $table->string('title', 100);
+            $table->string('projected_cost', 10)->nullable();
+            $table->string('current_cost', 10)->nullable();
+            $table->string('planned_hours', 10)->nullable();
+            $table->string('worked_hours', 10)->nullable();
             $table->string('deadline_date')->nullable();
-            $table->string('hourly_rate')->nullable();
+            $table->string('hourly_rate', 10)->nullable();
             $table->timestamps();
         });
 
